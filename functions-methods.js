@@ -9,8 +9,16 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomein(email) {
+    return email.split('@')[1]
 
-
+}
+const domainName1 = getEmailDomein("n.eeken@novi-education.nl")
+const domainName2 = getEmailDomein("t.mellink@novi.nl")
+const domainName3 = getEmailDomein("a.wiersma@outlook.com")
+console.log(domainName1)
+console.log(domainName2)
+console.log(domainName3)
 
 /* Opdracht  2 */
 // Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker), een novi-education domein (student), of extern domein (zoals gmail of outlook)
@@ -20,7 +28,24 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function typeOfEmail(email) {
+    if (email.split("@")[1] === "novi-education.nl" ) {
+        return "Medewerker"
+    }
+    else if (email.split("@")[1] === "novi.nl" ) {
+        return "Student"
+    }
+    else  {
+        return "Extern"
+    }
+}
 
+const domain1= typeOfEmail("n.eeken@novi-education.nl")
+const domain2= typeOfEmail("t.mellink@novi.nl")
+const domain3= typeOfEmail("novi.nlaapjesk@outlook.com")
+console.log(domain1)
+console.log(domain2)
+console.log(domain3)
 
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
@@ -34,3 +59,26 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(email) {
+    if (!email.includes("@")) {
+        return false;
+    }
+    if (email.includes(",")) {
+        return false;
+    }
+    if (email.endsWith(".")) {
+        return false;
+    }
+    return true;
+}
+const emailCheck1 = checkEmailValidity("n.eeken@novi.nl")
+const emailCheck2 = checkEmailValidity("tessmellink@novi.nl")
+const emailCheck3 = checkEmailValidity("n.eekenanovi.nl")
+const emailCheck4 = checkEmailValidity("n.eeken@novinl.")
+const emailCheck5 = checkEmailValidity("tessmellink@novi,nl")
+console.log(emailCheck1)
+console.log(emailCheck2)
+console.log(emailCheck3)
+console.log(emailCheck4)
+console.log(emailCheck5)
